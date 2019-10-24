@@ -43,8 +43,13 @@ app.set('view engine', 'handlebars');
 //passing in app which is equal to express 
 require("./controller/controller")(app);
 
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/scrapedNews";
+
+mongoose.connect(MONGODB_URI);
+
+
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/scrapedNews", { useNewUrlParser: true });
+
 
 app.listen(PORT, function() {
     console.log("App running on port " + PORT + "!");
